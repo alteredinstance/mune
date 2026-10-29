@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mune"
+description = "Community tools for Microsoft Zune players: Windows 11 setup, audio compatibility fixes, firmware research"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = ["mutagen>=1.45", "Pillow>=9"]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+mune = "mune.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "mune.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
